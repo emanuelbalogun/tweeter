@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 120px;
+  width: 100%;
+  background-color:#4056A1 ;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+
+  position: fixed;  
+}
+
+nav span {
+  font-family: "Bungee", cursive;
+}
+
+nav .rightdiv {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+nav .rightdiv i {
+  color: red;
+  margin-top: -20px;
+}
