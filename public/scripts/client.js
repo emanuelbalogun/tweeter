@@ -5,12 +5,18 @@
  */
 
 $(document).ready (function() {
-  
+
 const DaysBetween = function (timestamp) {
   const dateFormat = new Date(timestamp);
   const today = new Date();
   const daysago = (today.getTime() - dateFormat.getTime()) / (1000 * 3600 * 24);
   return Math.round(daysago);
+};
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
 
 const createTweetElement = function (tweet) {
@@ -23,7 +29,7 @@ const createTweetElement = function (tweet) {
   <p>${tweet.user.handle}</p>
 </header>          
   <p>
-   ${tweet.content.text} 
+   ${escape(tweet.content.text)} 
   </p> 
 
   <hr>  
@@ -50,9 +56,7 @@ const renderTweets = function (tweetArray) {
 
 const validate = function() {
   const myTweet = $("#tweet-text").val();
-  console.log(myTweet);
-  console.log(myTweet.length);
-  if(myTweet.length > 140) {
+    if(myTweet.length > 140) {
 
     return "The tweet charater cannot be greater than 140 in length";
   } 
@@ -64,6 +68,7 @@ const validate = function() {
   }
   return null;
 }
+
 $("#targetForm").on("submit", function (event) {
   event.preventDefault(); 
   const result = validate();
