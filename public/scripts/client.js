@@ -73,7 +73,8 @@ $("#targetForm").on("submit", function (event) {
   event.preventDefault(); 
   const result = validate();
   if(result) {
-    alert(result);
+    $("#errorLabel").text(result);
+    $("#errorLabel").css('display', 'block');
     return false;
   }
   const data = $("#targetForm").serialize();

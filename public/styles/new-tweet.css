@@ -77,3 +77,12 @@
   font-size: medium;
 }
 
+#errorLabel {
+color: #c51244 !important;
+padding: 10px !important;
+border-radius: 0 !important;
+position: relative; 
+display: none;
+box-shadow: 1px 1px 1px #aaaaaa;
+margin-top: 10px;
+}

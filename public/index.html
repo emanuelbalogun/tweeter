@@ -66,9 +66,12 @@
       </div>
     </header>
 
+    
     <!-- Page-specific (main) content here -->
+    <label id = "errorLabel" ></label>
     <main class="container">
       <section class="new-tweet">
+      
         <h2>Compose Tweet</h2>
         <form id="targetForm" method="Post" action="/tweets" enctype="multipart/form-data">
           <label for="tweet-text">What are you humming about?</label>
@@ -79,8 +82,9 @@
           </div>
         </form>
       </section>
-
-      <section class="tweets" id="tweets-container">
+      
+      <section class="tweets" id ="tweets-container">
+        
         <!-- <article>
           <header>
             <div>
