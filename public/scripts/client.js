@@ -14,6 +14,7 @@ $(document).ready(function () {
     return div.innerHTML;
   };
 
+  //Dynamically build the HTML to display the tweet
   const createTweetElement = function (tweet) {
     const html = `<article>
 <header>
@@ -41,6 +42,8 @@ $(document).ready(function () {
     return html;
   };
 
+
+  //Render the tweet from an array of tweets
   const renderTweets = function (tweetArray) {
     tweetArray.forEach((item) => {
       let $article = createTweetElement(item);
@@ -48,6 +51,7 @@ $(document).ready(function () {
     });
   };
 
+  //Validation for correctness of the user input
   const validate = function () {
     const myTweet = $("#tweet-text").val();
     if (myTweet.length > 140) {
@@ -60,6 +64,7 @@ $(document).ready(function () {
     return null;
   };
 
+  //Posting to \tweets route to submit user tweet
   $("#targetForm").on("submit", function (event) {
     event.preventDefault();
     const result = validate();
@@ -86,6 +91,7 @@ $(document).ready(function () {
     });
   }
 
+  //Refresh the tweet to avoid duplications
   function refresh() {
     $("#tweet-text").val('');
     $("#errorLabel").css("display", "none");
