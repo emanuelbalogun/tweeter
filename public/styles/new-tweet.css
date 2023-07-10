@@ -90,17 +90,4 @@ box-shadow: 1px 1px 1px #aaaaaa;
 margin-top: 10px;
 }
 
-#scrollbutton {
-  border-radius: 50%;
-  display : none;
-  background: red ;
-  height: 70px;
-  width: 70px;
-  border: 1px solid red;
-  float: right;
-  top:0px;
-  z-index: 99;
-  position: relative;
-  color: white;
-  
-}
+

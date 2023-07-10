@@ -3,8 +3,9 @@ $(document).ready(function () {
     $("#scrollbutton").css("display", "block");
   });
 
-  $("#scrollbutton").on("submit", function (event) {
+  $("#scrollbutton").on("click", function (event) { 
     event.preventDefault();
-    $(window).scrollTop();
+    // window.scrollTo(0,0);
+$("html").scrollTop(0);
   });
 });
