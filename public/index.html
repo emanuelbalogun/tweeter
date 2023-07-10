@@ -37,6 +37,7 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer.js"></script>
     <script
       type="text/javascript"
       src="/scripts/composer-char-counter.js"
@@ -70,6 +71,7 @@
     <!-- Page-specific (main) content here -->
     
     <main class="container">
+      
       <section class="new-tweet">
       
         <h2>Compose Tweet</h2>
@@ -82,34 +84,12 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-      </section>
-
-      
-      <section class="tweets" id ="tweets-container">
         
-        <!-- <article>
-          <header>
-            <div>
-            <i class="fa-solid fa-user-large"></i> 
-            <span>Newton</span>          
-          </div>
-            <p>@SirIssac</p>
-          </header>          
-            <p>
-              If I have seen further it is by standing on the shoulders of giants
-            </p> 
-
-            <hr>  
-            <footer>
-            <div>10 days ago</div>
-          <div>
-              <i class="fa-brands fa-font-awesome"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-solid fa-heart"></i>
-            </div>
-          </footer>
-        </article> -->
       </section>
+      <section style="position: relative;" class="tweets" id ="tweets-container">
+        <div><button id="scrollbutton" type="submit">   <i class="fa-solid fa-angles-up"></i></button></div>
+      </section>
+     
     </main>
   </body>
 </html>

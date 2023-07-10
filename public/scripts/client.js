@@ -7,7 +7,7 @@
 
 
 $(document).ready(function () {
-
+  //escape function to prevent Cross site Scripting/ code inhection
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
