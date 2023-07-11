@@ -6,6 +6,6 @@ $(document).ready(function () {
   $("#scrollbutton").on("click", function (event) { 
     event.preventDefault();
     // window.scrollTo(0,0);
-$("html").scrollTop(0);
+    $("html").scrollTop(0);
   });
 });

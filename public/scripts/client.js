@@ -4,14 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-
 $(document).ready(function () {
   //escape function to prevent Cross site Scripting/ code inhection
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
+  };
+  const jsEscape = function (str) {
+    return String(str).replace(/[^\w. ]/gi, function (c) {
+      return "\\u" + ("0000" + c.charCodeAt(0).toString(16)).slice(-4);
+    });
   };
 
   //Dynamically build the HTML to display the tweet
@@ -25,7 +28,7 @@ $(document).ready(function () {
   <p>${tweet.user.handle}</p>
 </header>          
   <p>
-   ${escape(tweet.content.text)} 
+   ${(tweet.content.text)} 
   </p> 
 
   <hr>  
@@ -41,7 +44,6 @@ $(document).ready(function () {
 
     return html;
   };
-
 
   //Render the tweet from an array of tweets
   const renderTweets = function (tweetArray) {
@@ -65,6 +67,7 @@ $(document).ready(function () {
   };
 
   //Posting to \tweets route to submit user tweet
+
   $("#targetForm").on("submit", function (event) {
     event.preventDefault();
     const result = validate();
@@ -72,31 +75,41 @@ $(document).ready(function () {
       $("#errorLabel").text(result);
       $("#errorLabel").css("display", "block");
       return false;
+    } else {
+      $("#tweet-text").val(jsEscape($("#tweet-text").val()));
     }
     const data = $("#targetForm").serialize();
     $.ajax({
       type: "POST",
       url: "/tweets",
       data: data,
-    }).then(function () {
-      refresh();
-      loadTweets();
-    });
+    })
+      .then(function () {
+        refresh();
+        loadTweets();
+      })
+      .catch(function () {
+        $("#errorLabel").text("Unable to submit tweet");
+        $("#errorLabel").css("display", "block");
+      });
   });
 
   //load the tweet
   function loadTweets() {
-    $.ajax("/tweets", { method: "GET" }).then(function (data) {
-      renderTweets(data);
-    });
+    $.ajax("/tweets", { method: "GET" })
+      .then(function (data) {
+        renderTweets(data);
+      })
+      .catch(function () {
+        $("#errorLabel").text("Unable to fetch tweet");
+        $("#errorLabel").css("display", "block");
+      });
   }
-
   //Refresh the tweet to avoid duplications
   function refresh() {
-    $("#tweet-text").val('');
+    $("#tweet-text").val("");
     $("#errorLabel").css("display", "none");
     $("#tweets-container").html("");
   }
-
   loadTweets();
 });
